@@ -1,0 +1,56 @@
+<!-- Mustache :-{)~ Template for Restaurants -->
+<script type="text/x-mustache-tmpl" id="restaurants_tmpl">
+	<div data-role="fieldcontain">
+	 	<fieldset data-role="controlgroup">
+	        {{ob}}#restaurants{{cb}}
+			<input type="checkbox" name="restaurant_{{ob}}id{{cb}}" id="restaurant_{{ob}}id{{cb}}" class="custom" />
+			<label for="restaurant_{{ob}}id{{cb}}">{{ob}}name{{cb}}</label>
+			{{ob}}/restaurants{{cb}}
+	    </fieldset>
+	</div>
+</script>
+
+<!-- Mustache :-{)~ Template for MenuItem -->
+<script type="text/x-mustache-tmpl" id="menuTemplate">
+	{{ob}}#categories{{cb}}
+	<li>{{ob}}name{{cb}}
+		<ul data-role="listview" data-filter="true">
+		    {{ob}}#items{{cb}}
+			<li data-icon="plus" id="menuitem_{{ob}}pid{{cb}}"> 
+			    <a href="#" class="addmenuitem" data-menuitemid="{{ob}}pid{{cb}}" data-price="{{ob}}price{{cb}}" data-name="{{ob}}title{{cb}}">
+				   <img src="{{ob}}image{{cb}}" alt="{{ob}}title{{cb}}"/>
+				   <h3>{{ob}}title{{cb}} - <span class="currency">{{ob}}price{{cb}}</span></h3>
+				   <p>{{ob}}description{{cb}}</p>
+				</a>
+			</li>
+            {{ob}}/items{{cb}}
+		</ul>
+    </li>
+    {{ob}}/categories{{cb}}
+</script>
+
+<!-- Mustache :-{)~ Template for CartItem -->
+<script type="text/x-mustache-tmpl" id="cartItem">
+    <li id="cartitem_{{ob}}pid{{cb}}" price="{{ob}}price{{cb}}" data-icon='delete' class='ui-li-multibubble'>
+        <a href="#" class="removemenuitem" data-menuitemid="{{ob}}pid{{cb}}">{{ob}}name{{cb}}</a>
+        <span class="ui-li-count"><span id="item-total" class="currency">{{ob}}total{{cb}}</span></span>
+        <span class="ui-li-count" id="qty">{{ob}}quantity{{cb}}</span>
+    </li>
+</script>
+
+<!-- Mustache :-{)~ Template for ShoppingCart -->
+<script type="text/x-mustache-tmpl" id="shoppingCart">
+    <div id="cart">
+        <ul data-role="listview" data-inset="true" class="items">
+			<li data-role="list-divider" id="cart_top">Your Cart</li>
+			<li data-theme="a" id="cart_bottom">
+			    <a href="#">Total
+			        <span class="ui-li-count">
+			            <span id="total" class="currency">0.00</span>
+			        </span>
+			    </a>
+		    </li>
+        </ul>
+    </div>
+    <button id="dump" data-role="button">Dump the cart!</button>
+</script>

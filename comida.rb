@@ -25,8 +25,8 @@ module Comida
       mustache :search
     end
 
-    get '/other' do
-      mustache :other
+    get '/menus' do
+      mustache :menus
     end
   
     # start the server if ruby file executed directly

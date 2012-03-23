@@ -13,6 +13,10 @@
 	<!-- Mustache -->
 	<script src="javascripts/jquery.mustache.js" type="text/javascript" charset="utf-8"></script>
 	
+	<!-- MVC: Spine.js -->
+	<script src="javascripts/spine/spine.js" type="text/javascript" charset="utf-8"></script>
+    <script src="javascripts/spine/local.js" type="text/javascript" charset="utf-8"></script>
+	
 	<!-- jQuery Mobile -->
 	<script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
 	
@@ -22,17 +26,7 @@
 	<!-- jQuery Format Currency Plugin -->
 	<script type="text/javascript" src="javascripts/jquery.formatCurrency-1.4.0.js"></script>
 	
-	<!-- Mustache :-{)~ Template for Restaurants -->
-    <script type="text/x-mustache-tmpl" id="restaurants_tmpl">
-		<div data-role="fieldcontain">
-		 	<fieldset data-role="controlgroup">
-		        {{ob}}#restaurants{{cb}}
-				<input type="checkbox" name="restaurant_{{ob}}id{{cb}}" id="restaurant_{{ob}}id{{cb}}" class="custom" />
-				<label for="restaurant_{{ob}}id{{cb}}">{{ob}}name{{cb}}</label>
-				{{ob}}/restaurants{{cb}}
-		    </fieldset>
-		</div>
-    </script>
+    {{> client_side_templates}}
 </head> 
 <body> 
 {{{yield}}}	

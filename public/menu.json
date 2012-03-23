@@ -1,0 +1,42 @@
+{ "menu": {
+    "categories": [
+        { 
+	      "name": "salads", 
+          "items": [
+            {
+	          "pid": "001",
+	          "title": "QUESADILLA EXPLOSION SALAD",
+	          "description": "Layers of flavor make this our most popular salad. Includes grilled chicken with cheese, tomatoes, corn relish, cilantro and tortilla strips. Served with our citrus-balsamic dressing and cheese quesadilla wedges.",
+	          "image": "images/salads_quesadilla.gif",
+	          "price": 10.30
+            },
+            {
+	          "pid": "002",
+	          "title": "CARIBBEAN SALAD",
+	          "description": "Fresh pineapple, mandarin oranges, dried cherries, green onions, cilantro, sesame seeds and honey-lime dressing. With your choice of grilled chicken or grilled shrimp.",
+	          "image": "images/salads_caribbean.gif",
+		      "price": 9.45
+            }
+          ] 
+        },
+        { 
+	      "name": "sandwiches", 
+	      "items": [
+	        {
+		      "pid": "003",
+	          "title": "GRILLED CHICKEN",
+	          "description": "With applewood smoked bacon, tomato, Swiss and honey-mustard dressing on a sesame seed or wheat bun.",
+	          "image": "images/sandwiches_grilled_chicken.gif",
+		      "price": 6.30
+	        },
+	        {
+		      "pid": "004",
+	          "title": "BUFFALO CHICKEN RANCH",
+	          "description": "Crispy chicken with spicy wing sauce and ranch dressing on a sesame seed or wheat bun.",
+	          "image": "images/sandwiches_buffalo_chicken.gif",
+	          "price": 8.50
+	        }
+	      ] 
+	    }
+    ]
+}}

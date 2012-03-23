@@ -10,3 +10,11 @@
 	top: auto !important; 
 	width:100%;
 }
+
+.ui-li-multibubble .ui-li-count {
+    float: right;
+}
+
+.ui-li-multibubble .ui-li-count:nth-child(odd) {
+    margin-right: 5em;
+}
