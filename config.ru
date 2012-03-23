@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'bundler'
 
-Bundler.setup
+Bundler.require(:default)
 
 require './comida'
 
@@ -14,4 +14,6 @@ end
 map '/api' do
   run Comida::ComidaApi
 end
+
+$stdout.sync = true
   

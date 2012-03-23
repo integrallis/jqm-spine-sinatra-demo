@@ -1,0 +1,21 @@
+<!-- ******************* -->
+<!-- Search Results Page -->
+<!-- ******************* -->
+<section data-role="page" id="search_results">
+	<header data-role="header">
+		<h1>Resturants</h1>
+		<nav data-role="navbar">
+			<ul>
+				<li><a href="#home" class="ui-btn-active">Search</a></li>
+				<li><a href="#menu">Menus</a></li>
+				<li><a href="#order">Order</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div data-role="content" id="content_main">	
+		<form action="/api/menus.json" method="get" data-ajax="false" id="restaurant_selection_form">
+			<div id="restaurants_found"></div>
+			<button type="submit" data-theme="a">Submit</button>
+		</form>
+	</div>
+</section><!-- /page -->

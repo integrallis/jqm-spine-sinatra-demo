@@ -1,17 +1,40 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>
-      {{title}}
-    </title>
-    <style>
-      body { background: #eee; }
-      li { list-style: none !important; }
-    </style>
-  </head>
-  <body>
-    <div id="main">
-      {{{yield}}}
-    </div>
-  </body>
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>{{title}}</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1;"/> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/jquery.mobile.simpledialog.min.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/comida.css" />
+	
+	<!-- jQuery -->
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	
+	<!-- Mustache -->
+	<script src="javascripts/jquery.mustache.js" type="text/javascript" charset="utf-8"></script>
+	
+	<!-- jQuery Mobile -->
+	<script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
+	
+	<!-- jQuery Mobile Dependent Libraries -->
+	<script type="text/javascript" src="javascripts/jquery.mobile.simpledialog.min.js"></script>
+	
+	<!-- jQuery Format Currency Plugin -->
+	<script type="text/javascript" src="javascripts/jquery.formatCurrency-1.4.0.js"></script>
+	
+	<!-- Mustache :-{)~ Template for Restaurants -->
+    <script type="text/x-mustache-tmpl" id="restaurants_tmpl">
+		<div data-role="fieldcontain">
+		 	<fieldset data-role="controlgroup">
+		        {{ob}}#restaurants{{cb}}
+				<input type="checkbox" name="restaurant_{{ob}}id{{cb}}" id="restaurant_{{ob}}id{{cb}}" class="custom" />
+				<label for="restaurant_{{ob}}id{{cb}}">{{ob}}name{{cb}}</label>
+				{{ob}}/restaurants{{cb}}
+		    </fieldset>
+		</div>
+    </script>
+</head> 
+<body> 
+{{{yield}}}	
+</body>
 </html>

@@ -1,10 +1,15 @@
 require 'sinatra/base'
+require 'sinatra/reloader'
 require 'mustache/sinatra'
 require 'json'
+require 'sinatra/activerecord'
+
+# Application 
+require "#{File.dirname(__FILE__)}/models"
 
 module Comida
   #
-  #
+  # The Web App
   #
   class ComidaWebApp < Sinatra::Base
     register Mustache::Sinatra
@@ -17,17 +22,11 @@ module Comida
     }
 
     get '/' do
-      @title = "Mustache + Sinatra = Wonder"
-      mustache :index
+      mustache :search
     end
 
     get '/other' do
       mustache :other
-    end
-
-    get '/nolayout' do
-      content_type 'text/plain'
-      mustache :nolayout, :layout => false
     end
   
     # start the server if ruby file executed directly
@@ -35,12 +34,79 @@ module Comida
   end
   
   #
-  #
+  # The API
   #
   class ComidaApi < Sinatra::Base
+    
+    #
+    # Search for restaurants based on location
+    #
     get '/search.json' do
+      params.each_pair { |n,v|  puts "PARAM: #{n} ==> #{v}"}
+      query = params[:q]
+      lat = params[:lat]
+      lon = params[:lon]
+      
+      puts "Q: #{query}, LAT: #{lat}, LON: #{lon}"
+      
+      restaurants = []
+      
+      Restaurant.near(query.nil? ? [lat.to_f, lon.to_f] : query, 10).each do |r| 
+         restaurants << { :id => r.id, :name => r.name } 
+      end
+      
+      response = {}
+      response[:restaurants] = restaurants
+  
       content_type :json
-      { :key1 => 'value1', :key2 => 'value2' }.to_json
+      response.to_json
     end
+    
+    #
+    # Get a Combined Menu for selected restaurants
+    # I apologize to humnanity for this atrocity!!!!! 
+    #
+    get '/menus.json' do
+      restaurants_ids = []
+      params.each_pair do |n,v|  
+        puts "PARAM: #{n} ==> #{v}"
+        restaurants_ids << n.split('_').last.to_i if n =~ /restaurant_(.*)/ && v=='on'
+      end
+      
+      puts "RESTAURANTS ==> #{restaurants_ids}"
+      
+      categorized = MenuItem.where(:restaurant_id => restaurants_ids).each_with_object({}) do |item, h| 
+        (h[item.category.to_sym] ||= []) << item 
+      end
+      
+      # PARAM: restaurant_10 ==> on
+      # PARAM: restaurant_9 ==> on
+      
+      response = {}
+      response[:menu] = {}
+      response[:menu][:categories] = []
+      
+      categorized.each_pair do |category, items|
+        items_formatted = []
+        items.each do |i| 
+          items_formatted << { :pid => i.id, :title => i.name, :description => i.description, :image => i.image, :price => i.price }
+        end
+        response[:menu][:categories] << { :name => category, :items => items_formatted }
+      end
+
+      content_type :json
+      response.to_json
+    end
+    
+    #
+    # Submit Your Order
+    #
+    
+    # post '/order/?' do 
+    #   jdata = params[:data]
+    #   for_json = JSON.parse(jdata)
+    # end
+    # response = RestClient.post 'http://localhost:4567/solve', {:data => jdata}, {:content_type => :json, :accept => :json}
+    
   end
 end

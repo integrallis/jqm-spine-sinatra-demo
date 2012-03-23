@@ -1,0 +1,12 @@
+.ui-header .ui-title, .ui-footer .ui-title {
+    margin-left: 0;
+    margin-right: 0;
+   /* text-overflow:visble;  */ /* -Uncomment - to disable Ellipsis completely use with Caution- !*/ 
+}
+
+#submit_buttons {
+	bottom:50px; 
+	position:absolute !important; 
+	top: auto !important; 
+	width:100%;
+}

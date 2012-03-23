@@ -1,0 +1,46 @@
+<!-- *********** -->
+<!-- Search Page -->
+<!-- *********** -->
+<section data-role="page" id="search" data-nobackbtn="true">
+	<header data-role="header">
+		<h1>Hungry? Get Some Comida!</h1>
+		<nav data-role="navbar" data-iconpos="top">
+			<ul>
+				<li><a href="#home" class="ui-btn-active">Search</a></li>
+				<li><a href="#menu">Menus</a></li>
+				<li><a href="#order">Order</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div data-role="content">
+		<form action="/api/search.json" method="get" data-ajax="false" id="search_form">
+			<ul data-role="listview">
+				<li data-role="fieldcontain">
+		        	<label for="q">Where:</label>
+		         	<input type="search" name="q" id="q" value=""  />
+				</li>
+				<li data-role="fieldcontain">
+		        	<label for="use_location">Use My Location:</label>
+					<select name="use_location" id="use_location" data-role="slider" data-mini="true">
+						<option value="no">No</option>
+						<option value="yes">Yes</option>
+					</select>
+				</li>
+				<li data-role="fieldcontain">
+		        	<label for="slider">How Far:</label>
+				 	<input type="range" name="slider" id="slider" value="10" min="0" max="20" data-mini="true"/>
+				</li>
+			</ul>
+			<ul data-role="listview" id="submit_buttons">
+				<li>
+					<div>
+						<fieldset class="ui-grid-a">
+								<div class="ui-block-a"><button type="submit" data-theme="d">Cancel</button></div>
+								<div class="ui-block-b"><button type="submit" data-theme="a">Submit</button></div>
+					    </fieldset>
+					</div>
+				</li>
+			</ul>
+		</form>
+	</div><!-- /content -->	
+</section><!-- /page -->

@@ -3,7 +3,13 @@ module Comida
     module Views
       class Layout < Mustache
         def title 
-          @title || "Trust the Stache"
+          @title || "Welcome to Comida"
+        end
+        def ob
+          "\{\{"
+        end
+        def cb
+          "\}\}"
         end
       end
     end

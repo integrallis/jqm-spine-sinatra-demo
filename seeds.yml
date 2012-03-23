@@ -1,0 +1,220 @@
+"3rd Avenue Grille": 
+    address_line_1: "7325 E. Third Avenue"
+    city: "Scottsdale"
+    zip: "85251"
+    state: "AZ"
+    price_low: 16
+    price_high: 25
+    category: american
+    phone: 480-945-1550
+    menu_items: 
+        - title: 3rd Avenue Burger
+          description: A yummy burger
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 10.50
+          category: sandwiches
+        - title: Grilled Chicken Sandwich
+          description: Chicken Grilled to Perfection
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 7.50
+          category: sandwiches
+"44 fifteen Bar & Bistro ": 
+    address_line_1: "4415 N. Civic Center Plaza"
+    city: "Scottsdale"
+    zip: "85251"
+    state: "AZ"
+    price_low: 16
+    price_high: 25
+    category: american
+    phone: 480-941-9400
+    menu_items: 
+        - title: Spaghetti and Meatballs
+          description: That's a spicy meatball
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 12.99
+          category: entrees
+        - title: Tuna Melt
+          description: Chicken of the Sea
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 8.35  
+          category: sandwiches  
+"Ah ah gua ja Pool Bar & Grill ": 
+    address_line_1: "10438 N. Fort McDowell Road"
+    city: "Fountain Hills"
+    zip: "85264"
+    state: "AZ"
+    price_low: 0
+    price_high: 15
+    category: american
+    phone: (480) 789-5398  
+    menu_items: 
+        - title: Fajitas
+          description: Do it yourself
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 6.99
+          category: sandwiches
+        - title: Fish Tacos
+          description: Delicious fish tacos
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 9.99  
+          category: sandwiches
+"Alchemy Restaurant and Wine Bar at CopperWynd ": 
+    address_line_1: "13225 N. Eagle Ridge Drive"
+    city: "Fountain Hills"
+    zip: "85268"
+    state: "AZ"
+    price_low: 16
+    price_high: 25
+    category: american
+    phone: (480) 333-1880
+    menu_items: 
+        - title: Beef Stew
+          description: Just you Mom use to make it (no she didn't)
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 8.30
+          category: soups
+        - title: BBQ Pulled Pork 
+          description: Smoked Baby!
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 19.99
+          category: sandwiches
+"Beckett's Table": 
+    address_line_1: "3717 E. Indian School Road"
+    city: "Phoenix"
+    zip: "85018"
+    state: "AZ"
+    price_low: 16
+    price_high: 25
+    category: american
+    phone: (602) 954-1700
+    menu_items: 
+        - title: Ramen Noodles
+          description: For those on a budget
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 1.30
+          category: soups
+        - title: Balooney & Mayo Sandwich 
+          description: It's the economy!
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 2.99
+          category: sandwiches
+"Black Fig Bistro": 
+    address_line_1: "9800 E. Indian Bend Road"
+    city: "Scottsdale"
+    zip: "85256"
+    state: "AZ"
+    price_low: 0
+    price_high: 15
+    category: american
+    phone: 480-850-7777
+    menu_items: 
+        - title: Polenta
+          description: It's like grids but classy
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 5.99
+          category: entrees
+        - title: Lobster Ravioli 
+          description: Little pockets of goodness
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 12.99
+          category: entrees
+"Elements": 
+    address_line_1: "5700 E. McDonald Drive"
+    city: "Paradise Valley"
+    zip: "85253"
+    state: "AZ"
+    price_low: 26
+    price_high: 0
+    category: american
+    phone: (480) 607-2300 
+    menu_items: 
+        - title: Rice and Beans
+          description: Cowboy Food
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 5.99
+          category: entrees
+        - title: Gnocchi 
+          description: Tiny italian dumplings
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 8.99
+          category: entrees
+"Noh, a theater of Japanese Cuisine ": 
+    address_line_1: "7500 E. Doubletree Ranch Road"
+    city: "Scottsdale"
+    zip: "85258"
+    state: "AZ"
+    price_low: 26
+    price_high: 0
+    category: asian-and-pacific-rim
+    phone: (480) 555-5555
+    menu_items: 
+        - title: Unagi
+          description: BBQ Eel
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 7.99
+          category: sushi
+        - title: Toro 
+          description: Fatty Tuna
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 8.45
+          category: sushi
+"Vinifera": 
+    address_line_1: "11750 Sunrise Valley Drive"
+    city: "Reston"
+    zip: "20191"
+    state: "VA"
+    price_low: 0
+    price_high: 45
+    category: italian
+    phone: (703) 234-3550  
+    menu_items: 
+        - title: Minestrone
+          description: Good Soup
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 8.99
+          category: soups
+        - title: Penne Pasta with Summer Vegetables 
+          description: Healthy and Simple
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 9.45 
+          category: entrees
+"Reston Kabob": 
+    address_line_1: "11844 Sunrise Valley Dr # A"
+    city: "Reston"
+    zip: "20191"
+    state: "VA"
+    price_low: 0
+    price_high: 15
+    category: middle-eastern
+    phone: (703) 390-9070 ‎ 
+    menu_items: 
+        - title: Chicken Kabob
+          description: A favorite
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 11.99
+          category: entrees
+        - title: Lamb Kabob 
+          description: The original
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 15.45
+          category: entrees
+"Chili's Grill & Bar": 
+    address_line_1: "11840 Sunrise Valley Drive"
+    city: "Reston"
+    zip: "20191"
+    state: "VA"
+    price_low: 0
+    price_high: 15
+    category: merkan
+    phone: (703) 758-9268 ‎ 
+    menu_items: 
+        - title: Quesadilla Explosion Salad
+          description: Kabom in your mouth
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 11.99
+          category: salads
+        - title: Buffalo Chicken Ranch 
+          description: The original
+          image: "images/sandwiches_grilled_chicken.gif"
+          price: 15.45
+          category: sandwiches
