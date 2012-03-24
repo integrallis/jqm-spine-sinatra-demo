@@ -2,11 +2,9 @@
 
 {{> order_page}}
 
-<!-- Pull in our Models and Controller -->
-<script src="javascripts/app/models/menu.js" type="text/javascript" charset="utf-8"></script>
-<script src="javascripts/app/models/item.js" type="text/javascript" charset="utf-8"></script>
-<script src="javascripts/app/controllers/cart_item.js" type="text/javascript" charset="utf-8"></script>
-<script src="javascripts/app/controllers/shopping_cart.js" type="text/javascript" charset="utf-8"></script>
-
-<!-- Application Initialization -->
-<script src="javascripts/app/app.init.js" type="text/javascript" charset="utf-8"></script>
+<script>
+$(document).ready(function() {
+	$().initApp("initMenuPage", "#menu");
+	$().initApp("initOrderPage", "#order");
+})
+</script>

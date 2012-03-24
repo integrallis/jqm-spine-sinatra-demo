@@ -5,6 +5,91 @@
 	var cart = new ShoppingCart();
 	
 	var methods = {	
+		/* -------------------------- */
+		/* Initialize the Search Page */
+		/* -------------------------- */	
+		initSearchPage : function(options) {
+			var settings = {
+				callback: function() {}
+			};
+			if ( options ) {
+				$.extend( settings, options );
+			}
+
+		    $('#search_form').on('submit', function (e) {
+			    $this = $(this);
+
+			    // prevent the form submission
+			    e.preventDefault();
+
+			    // show spinner thingy
+			    $.mobile.showPageLoadingMsg();
+
+			    $.getJSON($this.attr('action'), $this.serialize(), function(response) {
+				    // delete all menus because we are using it as a singleton, yuck!
+			        Menu.deleteAll();
+			
+		            // hide spinner thingy
+			        $.mobile.hidePageLoadingMsg();
+
+			        // find the content page
+					var $page = $("#search_results");
+			  		var $content = $page.find("#restaurants_found");
+
+		            // render the template using the json response
+					var processedTemplate = $.mustache($("#restaurants_tmpl").html(), response);
+
+					// append the template and apply jQM goodness
+					$content.html(processedTemplate);
+					$content.trigger('create');
+
+		            // navigate to the search results page
+		            $.mobile.changePage($("#search_results"), "slideup");
+			    })
+				.error(function(jqXHR, textStatus, errorThrown) {
+				        alert("error " + textStatus + " incoming Text " + jqXHR.responseText);
+				});
+			});
+		},
+		
+		/* ---------------------------------- */
+		/* Initialize the Search Results Page */
+		/* ---------------------------------- */	
+		initSearchResultsPage : function(options) {
+			var settings = {
+				callback: function() {}
+			};
+			if ( options ) {
+				$.extend( settings, options );
+			}
+
+			$('#restaurant_selection_form').on('submit', function (e) {
+			    $this = $(this);
+
+				// prevent the form submission
+			    e.preventDefault();
+
+			    // show spinner thingy
+			    $.mobile.showPageLoadingMsg();
+
+			    $.getJSON($this.attr('action'), $this.serialize(), function(response) {
+
+		            // hide spinner thingy
+			        $.mobile.hidePageLoadingMsg();
+
+			        // persist the menus retrieved
+			        menu = Menu.create({contents : JSON.stringify(response)});
+
+		            // navigate to the search results page 
+		            // - we need the initialization to for each page to happen before show
+		            window.location.href="/menus";
+			    })
+				.error(function(jqXHR, textStatus, errorThrown) {
+				        alert("error " + textStatus + " incoming Text " + jqXHR.responseText);
+				});
+			});
+		},		
+		
 		/* ------------------------ */
 		/* Initialize the Menu Page */
 		/* ------------------------ */	
@@ -15,6 +100,8 @@
 			if ( options ) {
 				$.extend( settings, options );
 			}
+			
+			console.log("The page is ===> " + options.$page);
 	  
 			var $page = $("#menu");
 	  		var $list = $page.find("#menu_items");
@@ -90,36 +177,26 @@
 				
 				console.log("pagebeforeshow for Order Page");
 			});	
-		},
-	
-		/* -------------------- */
-		/* Initialize All Pages */
-		/* -------------------- */	
-		initAll : function(options) {
-			var settings = {
-				callback: function() {}
-			};
-			if ( options ) {
-				$.extend( settings, options );
-			}
-
-			$().initApp("initMenuPage");
-			$().initApp("initOrderPage");
 		}
 	}
   
 	/* --------------------------------- */
 	/* Initialize App and Pass Arguments */
 	/* --------------------------------- */
-	$.fn.initApp = function(method) {
-		// Method calling logic
-		if ( methods[method] ) {
-			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
-		} else if ( typeof method === 'object' || ! method ) {
-			return methods.initAll.apply( this, arguments );
-		} else {
-			$.error( 'Method ' +  method + ' does not exist' );
-		} 
+	$.fn.initApp = function(method, page) {
+		// only initialize if the target page exists
+		var $page = $(page);
+		if (typeof $page !== "undefined" && $page !== null) {
+			console.log("Initializing mobile page: " + page);
+			// Method calling logic
+			if ( methods[method] ) {
+				return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+			} else if ( typeof method === 'object' || ! method ) {
+				return methods.initAll.apply( this, arguments );
+			} else {
+				$.error( 'Method ' +  method + ' does not exist' );
+			} 
+	    }
 	}
 })(jQuery);
 
@@ -129,7 +206,3 @@
 $(document).bind("mobileinit", function() {
     $.mobile.page.prototype.options.addBackBtn = true;
 });
-
-$(document).ready(function() {
-	$().initApp();
-})

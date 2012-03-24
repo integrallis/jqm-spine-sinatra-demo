@@ -2,5 +2,9 @@
 
 {{> search_results_page}}
 
-<script type="text/javascript" src="javascripts/app/models/menu.js"/></script>
-<script type="text/javascript" src="javascripts/search.js"></script>
+<script>
+$(document).ready(function() {
+	$().initApp("initSearchPage", "#search");
+	$().initApp("initSearchResultsPage", "#search_results");
+})
+</script>
