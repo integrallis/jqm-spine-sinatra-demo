@@ -1,5 +1,7 @@
 (function($) {
 	Item.fetch();
+	Menu.fetch();
+	
 	var cart = new ShoppingCart();
 	
 	var methods = {	
@@ -22,15 +24,9 @@
 				console.log("pagebeforeshow for Menu Page");
 			});
 			
-			$.getJSON('menu.json', function(menu) {
-				var processedTemplate = $.mustache($("#menuTemplate").html(), menu.menu);
-				$list.html(processedTemplate);
-				$list.listview("refresh");
-			})
-			// .error(function(jqXHR, textStatus, errorThrown) {
-			//         alert("error " + textStatus + " incoming Text " + jqXHR.responseText);
-			// });
-			.error(function() { alert("Sorry can't load JSON file locally in this browser!")});
+			var processedTemplate = $.mustache($("#menuTemplate").html(), Menu.first().contentsAsJSON().menu);
+		    $list.html(processedTemplate);
+		    $list.listview("refresh");
 			
 			$(".currency").formatCurrency();
 			

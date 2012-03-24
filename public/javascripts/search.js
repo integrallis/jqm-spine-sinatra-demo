@@ -1,4 +1,7 @@
 $(document).ready(function() {	
+	Menu.fetch();
+	Menu.deleteAll();
+	
     $('#search_form').on('submit', function (e) {
 	    $this = $(this);
 	
@@ -32,7 +35,7 @@ $(document).ready(function() {
 		});
 	});
 	
-	$('#search_form').on('submit', function (e) {
+	$('#restaurant_selection_form').on('submit', function (e) {
 	    $this = $(this);
 	
 		// prevent the form submission
@@ -46,8 +49,12 @@ $(document).ready(function() {
             // hide spinner thingy
 	        $.mobile.hidePageLoadingMsg();
 	
+	        // persist the menus retrieved
+	        menu = Menu.create({contents : JSON.stringify(response)});
+	
             // navigate to the search results page
-            //$.mobile.changePage($("#search_results"), "slideup");
+            window.location.href="/menus";
+            //$.mobile.changePage("/menus", { transition: "slideup", reloadPage: true, data-ajax : false});
 	    })
 		.error(function(jqXHR, textStatus, errorThrown) {
 		        alert("error " + textStatus + " incoming Text " + jqXHR.responseText);
