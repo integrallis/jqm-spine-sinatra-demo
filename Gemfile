@@ -9,8 +9,8 @@ gem 'activerecord', '3.2.2'
 gem 'sinatra-activerecord', '0.1.3'
 gem 'pg', '0.13.2'
 gem 'barista', '1.2.1'
+gem 'sinatra-reloader', '1.0'
 
 group :development do
-  gem 'sinatra-reloader', '1.0'
   gem 'sqlite3', '1.3.5'
 end
