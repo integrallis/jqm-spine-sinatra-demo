@@ -48,12 +48,13 @@ module Comida
     #
     get '/search.json' do
       query = params[:q]
-      lat = params[:lat]
-      lon = params[:lon]
+      latitude = params[:latitude]
+      longitude = params[:longitude]
+      distance = params[:distance]
       
       restaurants = []
       
-      Restaurant.near(query.nil? ? [lat.to_f, lon.to_f] : query, 10).each do |r| 
+      Restaurant.near(query.empty? ? [latitude.to_f, longitude.to_f] : query, distance || 10).each do |r| 
         restaurants << { :id => r.id, :name => r.name } 
       end
       
@@ -65,8 +66,8 @@ module Comida
     end
     
     #
-    # Get a Combined Menu for selected restaurants
-    # I apologize to humnanity for this atrocity!!!!! 
+    # Get a Combined Menu for selected restaurants (get a hash of categories, values are arrays)
+    # I apologize to humanity for this atrocity!!!!! 
     #
     get '/menus.json' do
       restaurants_ids = []

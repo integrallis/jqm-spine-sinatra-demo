@@ -6,6 +6,31 @@ methods =
     settings = callback: ->
 
     $.extend settings, options  if options
+
+    $("#use_location").change ->
+      $(this).mouseup()
+      if $(this).attr("value") is "yes"
+        try
+          $.mobile.showPageLoadingMsg()
+          navigator.geolocation.getCurrentPosition ((location) ->
+              $("#search_form #latitude").val(location.coords.latitude)
+              $("#search_form #longitude").val(location.coords.longitude)
+              console.log "Latitude: #{location.coords.latitude}, Longitude: #{location.coords.longitude}"
+          ), (error) ->
+              error_message = switch error.code
+                when error.PERMISSION_DENIED
+                  "GeoLocation: Location Denied by User"
+                when error.POSITION_UNAVAILABLE
+                  "GeoLocation: Location Not Available"
+                when error.TIMEOUT
+                  "GeoLocation: Timeout waiting for Location"
+                else
+                  "GeoLocation: Unknown Error"
+              console.log("ERROR: #{error_message}")
+          , { maximumAge:60000, timeout:10000 }
+        finally
+          $.mobile.hidePageLoadingMsg()
+    
     $("#search_form").on "submit", (e) ->
       $this = $(this)
       e.preventDefault()
