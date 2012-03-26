@@ -20,7 +20,7 @@ methods =
         $content.trigger "create"
         $.mobile.changePage $("#search_results"), "slideup"
       ).error (jqXHR, textStatus, errorThrown) ->
-        alert "error " + textStatus + " incoming Text " + jqXHR.responseText
+        console.log "error #{textStatus} incoming Text #{jqXHR.responseText}"
 
   initSearchResultsPage: (options) ->
     settings = callback: ->
@@ -35,7 +35,7 @@ methods =
         menu = Menu.create(contents: JSON.stringify(response))
         window.location.href = "/menus"
       ).error (jqXHR, textStatus, errorThrown) ->
-        alert "error " + textStatus + " incoming Text " + jqXHR.responseText
+        console.log "error #{textStatus} incoming Text #{jqXHR.responseText}"
 
   initMenuPage: (options) ->
     settings = callback: ->
