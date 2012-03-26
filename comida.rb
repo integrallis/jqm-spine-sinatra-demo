@@ -3,9 +3,12 @@ require 'sinatra/reloader'
 require 'mustache/sinatra'
 require 'json'
 require 'sinatra/activerecord'
+require 'barista'
 
 # Application 
 require "#{File.dirname(__FILE__)}/models"
+
+Barista.root = File.join(File.dirname(__FILE__), 'coffeescripts')
 
 module Comida
   #
@@ -13,6 +16,8 @@ module Comida
   #
   class ComidaWebApp < Sinatra::Base
     register Mustache::Sinatra
+    register Barista::Integration::Sinatra
+    
     require './views/layout'
 
     set :mustache, {
@@ -42,17 +47,14 @@ module Comida
     # Search for restaurants based on location
     #
     get '/search.json' do
-      params.each_pair { |n,v|  puts "PARAM: #{n} ==> #{v}"}
       query = params[:q]
       lat = params[:lat]
       lon = params[:lon]
       
-      puts "Q: #{query}, LAT: #{lat}, LON: #{lon}"
-      
       restaurants = []
       
       Restaurant.near(query.nil? ? [lat.to_f, lon.to_f] : query, 10).each do |r| 
-         restaurants << { :id => r.id, :name => r.name } 
+        restaurants << { :id => r.id, :name => r.name } 
       end
       
       response = {}
@@ -69,18 +71,12 @@ module Comida
     get '/menus.json' do
       restaurants_ids = []
       params.each_pair do |n,v|  
-        puts "PARAM: #{n} ==> #{v}"
         restaurants_ids << n.split('_').last.to_i if n =~ /restaurant_(.*)/ && v=='on'
       end
-      
-      puts "RESTAURANTS ==> #{restaurants_ids}"
       
       categorized = MenuItem.where(:restaurant_id => restaurants_ids).each_with_object({}) do |item, h| 
         (h[item.category.to_sym] ||= []) << item 
       end
-      
-      # PARAM: restaurant_10 ==> on
-      # PARAM: restaurant_9 ==> on
       
       response = {}
       response[:menu] = {}
