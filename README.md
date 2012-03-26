@@ -16,6 +16,7 @@ Run it
     $ bundle exec shotgun -O config.ru
 
 Or
+
     $ foreman start
 
 Deploying to Heroku's Cedar Stack
