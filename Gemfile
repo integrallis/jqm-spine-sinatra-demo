@@ -7,7 +7,10 @@ gem 'shotgun', '0.9'
 gem 'geocoder', '1.1.1'
 gem 'activerecord', '3.2.2'
 gem 'sinatra-activerecord', '0.1.3'
-gem 'sinatra-reloader', '1.0'
-gem 'sqlite3', '1.3.5'
 gem 'pg', '0.13.2'
 gem 'barista', '1.2.1'
+
+group :development do
+  gem 'sinatra-reloader', '1.0'
+  gem 'sqlite3', '1.3.5'
+end
