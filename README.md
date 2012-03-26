@@ -10,7 +10,13 @@ Get started:
     $ gem install bundler
     $ bundle
     $ bundle exec ruby seeds.rb
+
+Run it
+
     $ bundle exec shotgun -O config.ru
+
+Or
+    $ foreman start
 
 Deploying to Heroku's Cedar Stack
 
@@ -20,3 +26,6 @@ Deploying to Heroku's Cedar Stack
     $ heroku run console
       $ irb(main):002:0> require './seeds'
     $ heroku open
+
+See demo at
+    $ http://integrallis-rubynation-demo.herokuapp.com/
