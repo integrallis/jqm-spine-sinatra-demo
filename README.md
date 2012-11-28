@@ -29,4 +29,4 @@ Deploying to Heroku's Cedar Stack
     $ heroku open
 
 See demo at
-    $ http://integrallis-rubynation-demo.herokuapp.com/
+    $ http://getcomida.herokuapp.com/
